@@ -18,7 +18,7 @@ In the `<head>` of your index.html put the following:
 <script src="js/donut.js"></script>
 
 <!-- I like my graphs pretty -->
-<script src="js/main.js"></script>
+<link rel="stylesheet" href="./css/main.css"/>
 ```
 
 ## Dat Data Dough 
