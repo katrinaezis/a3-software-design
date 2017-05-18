@@ -1,8 +1,23 @@
 $(function() {
+    console.log("hello")
 
-    d3.csv("data/data.csv", type, function(error, data) {
+     var donut = donutChart()
+        .width(960)
+        .height(500)
+        .cornerRadius(3) // sets how rounded the corners are on each slice
+        .padAngle(0.015) // effectively dictates the gap between slices
+        .variable('Probability')
+        .category('Species');
 
-
+    d3.tsv('../data/species.tsv', function(error, data) {
+        console.log(data);
+        if (error) throw error;
+        d3.select('#vis')
+            .datum(data) // bind data to the div
+            .call(donut); // draw chart in div
+    });
+});
+    // d3.csv("data/data.csv", type, function(error, data) {
         // var prepData = function() {
         //     chartData = data.map(function(d) {
         //         return {
@@ -13,20 +28,18 @@ $(function() {
         // }
         // prepData();
 
-        var d = donut();
+    //     var d = donut();
 
-        var c = d3.select("#vis")
-            .datum([data])
-            .call(d);
+    //     var c = d3.select("#vis")
+    //         .datum([data])
+    //         .call(d);
         
         
-    })
-    function type(d) {
-        d.population = +d.population;
-        return d;
-    } 
-})
-
+    // })
+    // function type(d) {
+    //     d.population = +d.population;
+    //     return d;
+    // } 
         // var arc = d3.svg.arc()
         //     .outerRadius(radius - 10)
         //     .innerRadius(radius - 70);
